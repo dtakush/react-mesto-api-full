@@ -1,15 +1,16 @@
 
 class Api {
-    constructor({baseUrl, headers}) {
+    constructor({baseUrl}) {
       this.baseUrl = baseUrl;
-      this.headers = headers
     }
 
     //Запрос карточек с сервера
     getInitialCards() {
       return fetch(`${this.baseUrl}/cards`, {
         method: 'GET',
-        headers: this.headers
+        headers: {
+          authorization: localStorage.getItem('jwt'),
+        }
       })
       .then(this._checkResponse)
     }
@@ -18,7 +19,10 @@ class Api {
     addCard(card) {
       return fetch(`${this.baseUrl}/cards`, {
         method: 'POST',
-        headers: this.headers,
+        headers: {
+          authorization: localStorage.getItem('jwt'),
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           link: card.link,
           name: card.name,
@@ -31,7 +35,9 @@ class Api {
      getUserInfo() {
       return fetch(`${this.baseUrl}/users/me`, {
         method: 'GET',
-        headers: this.headers
+        headers: {
+          authorization: localStorage.getItem('jwt'),
+        }
       })
       .then(this._checkResponse)
     }
@@ -40,7 +46,10 @@ class Api {
     setUserInfo(items) {
       return fetch(`${this.baseUrl}/users/me`, {
         method: 'PATCH',
-        headers: this.headers,
+        headers: {
+          authorization: localStorage.getItem('jwt'),
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           name: items.name,
           about: items.about
@@ -53,7 +62,9 @@ class Api {
     deleteCard(id) {
       return fetch(`${this.baseUrl}/cards/${id}`, {
         method: 'DELETE',
-        headers: this.headers
+        headers: {
+          authorization: localStorage.getItem('jwt'),
+        }
       })
       .then(this._checkResponse)
     }
@@ -62,8 +73,9 @@ class Api {
      changeLikeCardStatus(id, isLiked) {
       return fetch(`${this.baseUrl}/cards/likes/${id}`, {
         method: isLiked ? 'PUT' : 'DELETE',
-        headers: this.headers
-
+        headers: {
+          authorization: localStorage.getItem('jwt'),
+        }
       })
       .then(this._checkResponse)
     }
@@ -72,7 +84,10 @@ class Api {
     setNewAvatar(avatar) {
       return fetch(`${this.baseUrl}/users/me/avatar`, {
         method: 'PATCH',
-        headers: this.headers,
+        headers: {
+          authorization: localStorage.getItem('jwt'),
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           avatar: avatar.avatar,
         })
@@ -88,13 +103,9 @@ class Api {
     }
     }
 
-const jwt = localStorage.getItem('jwt');
+
 const api = new Api({
       baseUrl: 'https://api.dtakush.mesto.student.nomoredomains.club',
-      headers: {
-        'Authorization': `Bearer ${jwt}`,
-        'Content-Type': 'application/json'
-      }
   });
 
 
