@@ -84,11 +84,7 @@ export const checkToken = (token) => {
     }
   })
   .then((data) => {
-    return data.json();
-  })
-  .then((res) => {
-    console.log(res);
-    return res;
+    return data;
   })
   .catch((err) => console.log(err));
 }
