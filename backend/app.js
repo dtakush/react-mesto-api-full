@@ -8,11 +8,6 @@ const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
-const cors = require('cors');
-
-app.use(helmet());
-app.disable('x-powered-by');
-app.use(cookieParser());
 
 const { PORT = 3000 } = process.env;
 
@@ -25,11 +20,12 @@ const auth = require('./middlewares/auth');
 const midlewareErrors = require('./middlewares/error');
 const { userValidation, loginValidation } = require('./middlewares/validation');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { corsMiddleware } = require('./middlewares/cors');
 
-const corsOptions = {
-  origin: '*',
-  optionsSuccessStatus: 204,
-};
+app.use(corsMiddleware);
+app.use(helmet());
+app.disable('x-powered-by');
+app.use(cookieParser());
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
@@ -38,7 +34,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
 });
 
-app.use(express.json(), cors(corsOptions));
+app.use(express.json());
 
 // подключаем логгер запросов
 app.use(requestLogger);
