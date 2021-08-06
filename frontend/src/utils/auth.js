@@ -7,7 +7,6 @@ export const register = (email, password) => {
     headers: {
         'Content-Type': 'application/json'
     },
-    credentials: "include",
     body: JSON.stringify({
       email: email,
       password: password})
@@ -35,7 +34,6 @@ export const authorize = (email, password) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    credentials: "include",
     body: JSON.stringify({
       email: email,
       password: password})
@@ -51,13 +49,9 @@ export const authorize = (email, password) => {
           console.log("Пользователь с email не найден");
         }
     })
-    .then((data) => {
-      console.log(data);
-      if (data.token) {
-        localStorage.setItem('jwt', data.token);
-        return data;
-      }
-      return;
+    .then((res) => {
+      console.log(res);
+      return res.json();
     })
     .catch((err) => console.log(err));
 };
@@ -67,7 +61,6 @@ export const authorize = (email, password) => {
 export const checkToken = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
-    credentials: "include",
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',

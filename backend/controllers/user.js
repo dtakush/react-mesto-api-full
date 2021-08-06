@@ -103,21 +103,17 @@ module.exports.updateAvatar = (req, res, next) => {
 
 // Вход
 module.exports.login = (req, res, next) => {
-  // eslint-disable-next-line
   const { email, password } = req.body;
-
-  User.findUserByCredentials(email, password)
+  return User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign(
-        { _id: user._id },
-        NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
-        { expiresIn: '7d' },
-      );
-
-      res.send({ token });
-    })
-    .catch(() => {
-      throw new Unauthorized('Неверный логин либо пароль');
+      res.send({
+        token: jwt.sign(
+          { _id: user._id, email: user.email },
+          NODE_ENV === 'production' ? JWT_SECRET : 'super-strong-secret',
+          // eslint-disable-next-line comma-dangle
+          { expiresIn: '7d' }
+        ),
+      });
     })
     .catch(next);
 };
