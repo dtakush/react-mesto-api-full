@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.dtakush.mesto.students.nomoredomains.club';
+export const BASE_URL = 'https://api.dtakush.mesto.student.nomoredomains.club';
 
 //Регистрация
 export const register = (email, password) => {
