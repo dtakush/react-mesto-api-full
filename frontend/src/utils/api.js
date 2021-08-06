@@ -91,6 +91,10 @@ class Api {
 
 const api = new Api({
       baseUrl: 'https://api.dtakush.mesto.student.nomoredomains.club',
+      headers: {
+        authorization: localStorage.getItem('token'),
+        'Content-Type': 'application/json'
+      }
   });
 
 
