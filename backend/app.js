@@ -22,7 +22,7 @@ const { userValidation, loginValidation } = require('./middlewares/validation');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { corsMiddleware } = require('./middlewares/cors');
 
-app.use(corsMiddleware);
+app.use(corsMiddleware());
 app.use(helmet());
 app.disable('x-powered-by');
 app.use(cookieParser());
