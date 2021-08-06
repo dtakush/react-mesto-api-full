@@ -1,3 +1,4 @@
+import api from './api';
 export const BASE_URL = 'https://api.dtakush.mesto.student.nomoredomains.club';
 
 //Регистрация
@@ -50,14 +51,18 @@ export const authorize = (email, password) => {
           console.log("Пользователь с email не найден");
         }
     })
-    .then((data) => {
-      console.log(data);
-      if (data.token) {
-        localStorage.setItem('jwt', data.token);
-        return data;
+    .then((res) => {
+      if(res.ok) {
+        return res.json();
       }
-      return;
-    })
+      })
+      .then((res) => {
+        if(res.token) {
+            localStorage.setItem('token', res.token);
+            api.updateHeaders();
+            return res;
+        }
+    })  
     .catch((err) => console.log(err));
 };
 
