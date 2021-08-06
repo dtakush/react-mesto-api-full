@@ -52,6 +52,7 @@ export const authorize = (email, password) => {
         }
     })
     .then((data) => {
+      console.log(data.token);
       if (data.token) {
         document.cookie = `token=${data.token}; max-age=604800`
         localStorage.setItem('jwt', data.token);
