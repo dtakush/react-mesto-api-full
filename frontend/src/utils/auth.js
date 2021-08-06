@@ -41,6 +41,7 @@ export const authorize = (email, password) => {
       password: password})
   })
     .then((res) => {
+      console.log(res);
         if(res.status === 200) {
           return res.json();
         }
@@ -52,15 +53,10 @@ export const authorize = (email, password) => {
         }
     })
     .then((res) => {
-      if(res.ok) {
-        return res.json();
-      }
-      })
-      .then((res) => {
         if(res.token) {
-            localStorage.setItem('token', res.token);
-            api.updateHeaders();
-            return res;
+          localStorage.setItem('jwt', res.token);
+          api.updateHeaders();
+          return res;
         }
     })  
     .catch((err) => console.log(err));
