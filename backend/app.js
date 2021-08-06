@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
-// const cors = require('cors');
+const cors = require('cors');
 
 const { PORT = 3000 } = process.env;
 
@@ -21,15 +21,15 @@ const auth = require('./middlewares/auth');
 const midlewareErrors = require('./middlewares/error');
 const { userValidation, loginValidation } = require('./middlewares/validation');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const cors = require('./middlewares/cors');
+// const cors = require('./middlewares/cors');
 
-/* const corsOptions = {
-  origin: 'https://express.mesto.nomoredomains.club',
+const corsOptions = {
+  origin: 'https://dtakush.mesto.students.nomoredomains.club',
   credentials: true,
-}; */
+};
 
 app.use(helmet());
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 app.disable('x-powered-by');
 app.use(cookieParser());
 app.use(express.json());
@@ -45,7 +45,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 // подключаем логгер запросов
 app.use(requestLogger);
 
-app.use(cors());
+//app.use(cors());
 
 // роуты
 app.post('/signin', loginValidation, login);
