@@ -14,7 +14,7 @@ app.use(helmet());
 app.disable('x-powered-by');
 app.use(cookieParser());
 
-const { PORT = 5000 } = process.env;
+const { PORT = 3000 } = process.env;
 
 const userRouter = require('./routes/user');
 const cardRouter = require('./routes/card');
