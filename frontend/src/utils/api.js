@@ -87,12 +87,12 @@ class Api {
       return Promise.reject(`Ошибка: ${res.status}`);
     }
 
-    /*updateHeaders() {
-      this._headers = {
+    updateHeaders() {
+      this.headers = {
         'Content-Type': 'application/json',
-        authorization: `Bearer ${localStorage.getItem('token')}`,
+        authorization: `Bearer ${localStorage.getItem('jwt')}`,
       }
-    }*/
+    }
   }
 
 
