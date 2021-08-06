@@ -1,5 +1,7 @@
 const CORS_ALLOWED_URLS = [
   'https://dtakush.mesto.students.nomoredomains.club',
+  'https://api.dtakush.mesto.student.nomoredomains.club',
+  'localhost:3000'
 ];
 
 const CORS_ALLOWED_METHODS = 'OPTIONS, GET, POST, PUT, DELETE, PATCH';

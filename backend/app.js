@@ -21,11 +21,10 @@ const auth = require('./middlewares/auth');
 const midlewareErrors = require('./middlewares/error');
 const { userValidation, loginValidation } = require('./middlewares/validation');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { CORS_ALLOWED_URLS, CORS_ALLOWED_METHODS, CORS_ALLOWED_HEADERS } = require('./constants/corsSettings');
+const { CORS_ALLOWED_URLS, CORS_ALLOWED_METHODS, CORS_ALLOWED_HEADERS } = require('./middlewares/cors');
 
 app.use(helmet());
 
-app.use(cors());
 app.use((req, res, next) => {
   const { origin } = req.headers;
 
