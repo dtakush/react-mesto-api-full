@@ -1,7 +1,8 @@
 
 class Api {
-    constructor({baseUrl}) {
+    constructor({baseUrl, headers}) {
       this.baseUrl = baseUrl;
+      this.headers = headers;
     }
 
     //Запрос карточек с сервера
