@@ -1,4 +1,15 @@
-module.exports.corsMiddleware = (req, res, next) => {
+const CORS_ALLOWED_URLS = [
+  'https://dtakush.mesto.students.nomoredomains.club',
+];
+
+const CORS_ALLOWED_METHODS = 'OPTIONS, GET, POST, PUT, DELETE, PATCH';
+const CORS_ALLOWED_HEADERS = 'Origin, Content-Type';
+
+module.exports = { CORS_ALLOWED_URLS, CORS_ALLOWED_METHODS, CORS_ALLOWED_HEADERS };
+
+
+
+/* module.exports.corsMiddleware = (req, res, next) => {
     // Массив доменов, с которых разрешены кросс-доменные запросы
     const allowedCors = [
     'https://dtakush.mesto.students.nomoredomains.club',
@@ -36,5 +47,5 @@ module.exports.corsMiddleware = (req, res, next) => {
   
     next();
   });
-}
+} */
   
