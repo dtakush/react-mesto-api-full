@@ -82,6 +82,7 @@ function App() {
     //Проверка токена
     function tokenCheck() {
         const jwt = localStorage.getItem('jwt');
+        console.log(jwt);
 
         if(jwt) {
             auth.checkToken(jwt)
