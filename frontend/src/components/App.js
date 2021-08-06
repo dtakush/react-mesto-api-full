@@ -91,8 +91,8 @@ function App() {
                 if(res) {
                     console.log(res);
                     setUserData({ 
-                        email: res.data.email,
-                        id: res.data._id,
+                        email: res.email,
+                        id: res._id,
                     });
                     
                     setLoggedIn(true);
