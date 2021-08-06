@@ -2,7 +2,7 @@
 class Api {
     constructor({baseUrl, headers}) {
       this.baseUrl = baseUrl;
-      this.headers = headers;
+      this.headers = headers
     }
 
     //Запрос карточек с сервера
@@ -88,11 +88,12 @@ class Api {
     }
     }
 
+
 const api = new Api({
-      baseUrl: 'https://api.dtakush.mesto.student.nomoredomains.club',
+      baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-23',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        authorization: '3f3bc69b-6834-471f-8bfa-0881762188af',
+        'Content-Type': 'application/json'
       }
   });
 

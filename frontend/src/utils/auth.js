@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.dtakush.mesto.student.nomoredomains.club';
+export const BASE_URL = 'https://auth.nomoreparties.co';
 
 //Регистрация
 export const register = (email, password) => {
@@ -32,6 +32,7 @@ export const authorize = (email, password) => {
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",
     headers: {
+      'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
@@ -49,9 +50,12 @@ export const authorize = (email, password) => {
           console.log("Пользователь с email не найден");
         }
     })
-    .then((res) => {
-      console.log(res);
-      return res.json();
+    .then((data) => {
+      if (data.token) {
+        localStorage.setItem('jwt', data.token);
+        return data;
+      }
+      return;
     })
     .catch((err) => console.log(err));
 };
@@ -62,7 +66,6 @@ export const checkToken = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
-      'Accept': 'application/json',
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
     }

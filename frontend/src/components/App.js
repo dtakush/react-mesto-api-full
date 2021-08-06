@@ -68,8 +68,7 @@ function App() {
     function handleLogin({email, password}) {
         auth.authorize(email, password)
         .then((res) => {
-            console.log(res);
-            if(res.token) {
+            if(res && res.token) {
                 tokenCheck();
             } else {
                 handleIsTooltipPopupOpen();
@@ -89,8 +88,8 @@ function App() {
             .then((res) => {
                 if(res) {
                     setUserData({ 
-                        email: res.email,
-                        id: res._id,
+                        email: res.data.email,
+                        id: res.data._id,
                     });
                     
                     setLoggedIn(true);
