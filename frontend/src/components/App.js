@@ -82,9 +82,30 @@ function App() {
     //Проверка токена
     function tokenCheck() {
         const jwt = localStorage.getItem('jwt');
-        console.log(jwt);
 
-        if(jwt) {
+        if (jwt) {
+            auth
+              .checkToken(jwt)
+              .then((res) => {
+                setUserData({ 
+                    email: res.data.email,
+                    id: res.data._id,
+                });
+                
+                setLoggedIn(true);
+                history.push("/");
+                })
+                .then((res) => {
+                    localStorage.removeItem("jwt");
+                    return
+                })
+                .catch((err) => {
+                    console.log(`Attention! ${err}`);
+                    history.push("/signin");
+                })
+          }
+
+        /*if(jwt) {
             auth.checkToken(jwt)
             .then((res) => {
                 if(res) {
@@ -104,7 +125,7 @@ function App() {
                 console.log(`Attention! ${err}`);
                 history.push("/signin");
             })
-        }
+        }*/
     }
 
     React.useEffect(() => {
