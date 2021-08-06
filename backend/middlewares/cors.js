@@ -1,11 +1,11 @@
-// Массив доменов, с которых разрешены кросс-доменные запросы
-const allowedCors = [
+module.exports.corsMiddleware = (req, res, next) => {
+    // Массив доменов, с которых разрешены кросс-доменные запросы
+    const allowedCors = [
     'https://dtakush.mesto.students.nomoredomains.club',
     'https://api.dtakush.mesto.student.nomoredomains.club',
     'localhost:3000'
   ];
 
-module.exports.corsMiddleware = (req, res, next) => {
     // Значение для заголовка Access-Control-Allow-Methods по умолчанию (разрешены все типы запросов)
   const DEFAULT_ALLOWED_METHODS = "GET,HEAD,PUT,PATCH,POST,DELETE"; 
   
