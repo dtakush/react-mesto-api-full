@@ -55,7 +55,7 @@ export const authorize = (email, password) => {
       console.log(res);
         if(res.token) {
           localStorage.setItem('jwt', res.token);
-          api.updateHeaders();
+          //api.updateHeaders();
           return res;
         }
     })  
