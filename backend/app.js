@@ -21,7 +21,7 @@ const auth = require('./middlewares/auth');
 const midlewareErrors = require('./middlewares/error');
 const { userValidation, loginValidation } = require('./middlewares/validation');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-// const cors = require('./middlewares/cors');
+
 
 const corsOptions = {
   origin: 'https://dtakush.mesto.students.nomoredomains.club',
@@ -45,7 +45,12 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 // подключаем логгер запросов
 app.use(requestLogger);
 
-//app.use(cors());
+// краш-тест
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 // роуты
 app.post('/signin', loginValidation, login);
