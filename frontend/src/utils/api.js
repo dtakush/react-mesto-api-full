@@ -89,6 +89,7 @@ class Api {
 
     updateHeaders() {
       this.headers = {
+        'Accept': 'application/json',
         'Content-Type': 'application/json',
         authorization: `Bearer ${localStorage.getItem('jwt')}`,
       }
@@ -99,6 +100,7 @@ class Api {
 const api = new Api({
       baseUrl: 'https://api.dtakush.mesto.student.nomoredomains.club',
       headers: {
+        'Accept': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json'
       }
