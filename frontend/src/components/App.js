@@ -69,6 +69,7 @@ function App() {
         auth.authorize(email, password)
         .then((res) => {
             if(res && res.token) {
+                console.log(res);
                 tokenCheck();
             } else {
                 handleIsTooltipPopupOpen();
