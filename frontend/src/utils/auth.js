@@ -53,6 +53,7 @@ export const authorize = (email, password) => {
         }
     })
     .then((res) => {
+      console.log(res);
         if(res.token) {
           localStorage.setItem('jwt', res.token);
           api.updateHeaders();
