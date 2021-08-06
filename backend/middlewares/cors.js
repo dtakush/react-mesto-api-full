@@ -1,6 +1,6 @@
 const allowedCors = [
   'https://dtakush.mesto.students.nomoredomains.club',
-  'https://api.dtakush.mesto.student.nomoredomains.club',
+  'http://api.dtakush.mesto.student.nomoredomains.club',
   'localhost:3000'
 ];
 
