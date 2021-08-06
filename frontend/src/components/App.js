@@ -88,6 +88,7 @@ function App() {
         if(jwt) {
             auth.checkToken(jwt)
             .then((res) => {
+                console.log(res);
                 if(res) {
                     setUserData({ 
                         email: res.data.email,
