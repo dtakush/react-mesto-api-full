@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = 'dtakush.mesto.students.nomoredomains.club';
 
 //Регистрация
 export const register = (email, password) => {
