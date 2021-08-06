@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
+const cors = require('cors');
 
 const { PORT = 3000 } = process.env;
 
@@ -24,6 +25,7 @@ const { CORS_ALLOWED_URLS, CORS_ALLOWED_METHODS, CORS_ALLOWED_HEADERS } = requir
 
 app.use(helmet());
 
+app.use(cors());
 app.use((req, res, next) => {
   const { origin } = req.headers;
 
