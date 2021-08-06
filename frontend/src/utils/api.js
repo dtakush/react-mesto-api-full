@@ -5,20 +5,11 @@ class Api {
       this.headers = headers;
     }
 
-    _getHeaders(){
-      const token = localStorage.getItem('jwt'); 
-      return {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      }
-    }
-
     //Запрос карточек с сервера
     getInitialCards() {
       return fetch(`${this.baseUrl}/cards`, {
         method: 'GET',
-        headers: this._getHeaders()
+        headers: this.headers
       })
       .then(this._checkResponse)
     }
@@ -27,7 +18,7 @@ class Api {
     addCard(card) {
       return fetch(`${this.baseUrl}/cards`, {
         method: 'POST',
-        headers: this._getHeaders(),
+        headers: this.headers,
         body: JSON.stringify({
           link: card.link,
           name: card.name,
@@ -40,7 +31,7 @@ class Api {
      getUserInfo() {
       return fetch(`${this.baseUrl}/users/me`, {
         method: 'GET',
-        headers: this._getHeaders()
+        headers: this.headers
       })
       .then(this._checkResponse)
     }
@@ -49,7 +40,7 @@ class Api {
     setUserInfo(items) {
       return fetch(`${this.baseUrl}/users/me`, {
         method: 'PATCH',
-        headers: this._getHeaders(),
+        headers: this.headers,
         body: JSON.stringify({
           name: items.name,
           about: items.about
@@ -62,7 +53,7 @@ class Api {
     deleteCard(id) {
       return fetch(`${this.baseUrl}/cards/${id}`, {
         method: 'DELETE',
-        headers: this._getHeaders()
+        headers: this.headers
       })
       .then(this._checkResponse)
     }
@@ -71,7 +62,7 @@ class Api {
      changeLikeCardStatus(id, isLiked) {
       return fetch(`${this.baseUrl}/cards/likes/${id}`, {
         method: isLiked ? 'PUT' : 'DELETE',
-        headers: this._getHeaders()
+        headers: this.headers
 
       })
       .then(this._checkResponse)
@@ -81,7 +72,7 @@ class Api {
     setNewAvatar(avatar) {
       return fetch(`${this.baseUrl}/users/me/avatar`, {
         method: 'PATCH',
-        headers: this._getHeaders(),
+        headers: this.headers,
         body: JSON.stringify({
           avatar: avatar.avatar,
         })
@@ -99,11 +90,10 @@ class Api {
 
 const api = new Api({
       baseUrl: 'https://api.dtakush.mesto.student.nomoredomains.club',
-      /* headers: {
-        'Accept': 'application/json',
+      headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
-      } */
+      }
   });
 
 
