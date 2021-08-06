@@ -91,8 +91,9 @@ class Api {
 const api = new Api({
       baseUrl: 'https://api.dtakush.mesto.student.nomoredomains.club',
       headers: {
-        authorization: `Bearer ${localStorage.getItem('jwt')}`,
-        'Content-Type': 'application/json'
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
       }
   });
 
