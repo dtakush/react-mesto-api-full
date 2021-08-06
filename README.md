@@ -1,4 +1,4 @@
-<h1 align="center">Репозиторий для приложения проекта `Mesto`</h1>
+<h1 align="center">Репозиторий для приложения проекта ~Mesto~</h1>
 
 ## О проекте
 
@@ -12,10 +12,9 @@
 
 `npm i` - установка
 
-`npm run buld/dev` - build или dev сборка
-
-`npm run deploy` - опубликовать на gh-pages
+`npm run build/dev` - build или dev сборка
 
 ## Ссылки
 [dtakush.mesto.students.nomoredomains.club](https://dtakush.mesto.students.nomoredomains.club) — frontend   
 [api.dtakush.mesto.student.nomoredomains.club](https://api.dtakush.mesto.student.nomoredomains.club) — backend
+Публичный IP-адрес: 178.154.226.225
