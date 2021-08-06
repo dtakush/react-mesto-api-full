@@ -106,23 +106,15 @@ module.exports.login = (req, res, next) => {
   // eslint-disable-next-line
   const { email, password } = req.body;
 
-  User.findOne({ email }).select('+password')
+  User.findUserByCredentials(email, password)
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        JWT_SECRET,
+        NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
         { expiresIn: '7d' },
       );
-      return res
-        .cookie('jwt', token, {
-          maxAge: 604800000,
-          httpOnly: true,
-          sameSite: true,
-        })
-        .send({
-          message: 'Успешная авторизация',
-          token: token
-        });
+
+      res.send({ token });
     })
     .catch(() => {
       throw new Unauthorized('Неверный логин либо пароль');
