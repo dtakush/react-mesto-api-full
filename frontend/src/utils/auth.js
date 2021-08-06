@@ -42,7 +42,8 @@ export const authorize = (email, password) => {
   })
     .then((res) => {
       console.log(res);
-        if(res.status === 200) {
+      return res.json();
+        /* if(res.status === 200) {
           return res.json();
         }
         if(res.status === 400) {
@@ -50,7 +51,7 @@ export const authorize = (email, password) => {
         }
         if(res.status === 401) {
           console.log("Пользователь с email не найден");
-        }
+        } */
     })
     .then((res) => {
       console.log(res);
