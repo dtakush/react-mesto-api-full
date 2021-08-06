@@ -73,6 +73,7 @@ export const checkToken = (token) => {
     }
   })
   .then((res) => {
+    console.log(token);
     if(res.status === 200) {
       return res.json();
     }
