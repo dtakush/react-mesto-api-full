@@ -88,11 +88,10 @@ function App() {
         if(jwt) {
             auth.checkToken(jwt)
             .then((res) => {
-                console.log(res);
                 if(res) {
                     setUserData({ 
-                        email: res.data.email,
-                        id: res.data._id,
+                        email: res.email,
+                        id: res._id,
                     });
                     
                     setLoggedIn(true);
