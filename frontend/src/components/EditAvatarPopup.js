@@ -50,7 +50,7 @@ function EditAvatarPopup(props) {
         onClose={props.onClose}
         onSubmit={handleSubmit}>
             <input
-            value={avatar || ''}
+            value={''}
             name="link" type="url"
             placeholder="Ссылка"
             className="popup__input popup__input_link"
