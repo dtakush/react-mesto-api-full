@@ -11,6 +11,7 @@ function Main(props) {
 
     //Подписываемся на контект
     const currentUser = React.useContext(CurrentUserContext);
+    console.log(currentUser);
 
     return (
         <main className="content">
