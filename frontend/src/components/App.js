@@ -171,9 +171,9 @@ function App() {
     function handleUpdateUser(name, about) {
         console.log(name, about);
         api.setUserInfo(name, about)
-            .then((name, about) => {
-                console.log(name, about);
-                setCurrentUser(name, about);
+            .then((res) => {
+                console.log(res);
+                setCurrentUser(res);
                 closeAllPopups();
             })
             .catch((err) => {
