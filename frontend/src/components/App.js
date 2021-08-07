@@ -112,14 +112,6 @@ function App() {
     }, []);
 
 
-    //Выход из аккаунта
-   function handleSignOut() {
-        setLoggedIn(false);
-        history.push("/signin");
-        localStorage.removeItem("jwt");
-    }
-
-
     //Запрос информации пользователя
     React.useEffect(() => {
         if(loggedIn) {
@@ -135,6 +127,26 @@ function App() {
         
     }, [loggedIn]);
 
+    //Запрос карточек
+     React.useEffect(() => {
+        if(loggedIn) {
+           api.getInitialCards()
+            .then((cards) => {     
+                setCards(cards);
+           })
+           .catch((err) => {
+               console.log(`Attention! ${err}`);
+            });
+        }
+    }, [loggedIn]);
+
+
+    //Выход из аккаунта
+   function handleSignOut() {
+        setLoggedIn(false);
+        history.push("/signin");
+        localStorage.removeItem("jwt");
+    }
 
     //Открытие попапа проваленой регистрации
     function handleIsTooltipPopupOpen() {
@@ -204,20 +216,6 @@ function App() {
         setIsTooltipPopupOpen(false);
         setIsSuccessTooltipPopupOpen(false);
     }
-
-
-     //Запрос карточек
-     React.useEffect(() => {
-         if(loggedIn) {
-            api.getInitialCards()
-            .then((cards) => {     
-                setCards(cards);
-            })
-            .catch((err) => {
-                console.log(`Attention! ${err}`);
-            });
-         }
-    }, [loggedIn]);
 
 
     //Постановка и удаление лайка
