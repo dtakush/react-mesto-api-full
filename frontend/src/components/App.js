@@ -265,7 +265,6 @@ function App() {
     function handleEscClose(evt) {
         if(evt.key === 'Escape') {
             closeAllPopups()
-            console.log('esc')
         }
     }
 
