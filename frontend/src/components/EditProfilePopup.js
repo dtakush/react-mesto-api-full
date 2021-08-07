@@ -10,7 +10,7 @@ function EditProfilePopup(props) {
 
     //Стейт-переменные
     const [name, setName] = React.useState('');
-    const [description, setDescription] = React.useState('');
+    const [about, setAbout] = React.useState('');
 
 
     //Обработчики
@@ -18,8 +18,8 @@ function EditProfilePopup(props) {
         setName(e.target.value);
     }
 
-    function handleChangeDescription(e) {
-        setDescription(e.target.value);
+    function handleChangeAbout(e) {
+        setAbout(e.target.value);
     }
 
     function handleSubmit(e) {
@@ -27,13 +27,14 @@ function EditProfilePopup(props) {
         // Передаём значения управляемых компонентов во внешний обработчик
         props.onUpdateUser({
           name: name,
-          about: description,
+          about: about,
         });
     }
 
     React.useEffect(() => {
+        console.log(currentUser);
       setName(currentUser.name);
-      setDescription(currentUser.about);
+      setAbout(currentUser.about);
     }, [currentUser, props.isOpen]);
 
 
@@ -63,7 +64,7 @@ function EditProfilePopup(props) {
             ></span>
 
             <input
-            value={description || ''}
+            value={about || ''}
             name="about"
             type="text"
             placeholder="О себе"
@@ -71,7 +72,7 @@ function EditProfilePopup(props) {
             id="popup__input_about"
             minLength="2"
             maxLength="200"
-            onChange={handleChangeDescription}
+            onChange={handleChangeAbout}
             required
             />
             <span
