@@ -38,7 +38,7 @@ class Api {
 
     //Добавление и удаление лайка
     changeLikeCardStatus(id, isLiked) {
-      return fetch(`${this.baseUrl}/cards/${id}/likes/`, {
+      return fetch(`${this.baseUrl}/cards/${id}/likes`, {
         method: isLiked ? 'PUT' : 'DELETE',
         headers: this.headers
 

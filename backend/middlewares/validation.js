@@ -40,8 +40,6 @@ const userInfoValidation = celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2),
-    avatar: Joi.string().min(2).pattern(/(http|https):\/\/\w*\S*\./),
-    email: Joi.string().required().email(),
   }),
 });
 
