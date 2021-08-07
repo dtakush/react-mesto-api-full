@@ -68,7 +68,6 @@ function App() {
     function handleLogin({email, password}) {
         auth.authorize(email, password)
         .then((res) => {
-            console.log(res);
             if(res.token) {
                 tokenCheck();
             } else {
@@ -181,8 +180,8 @@ function App() {
     //Обработчик данных аватара
     function handleUpdateAvatar(item) {
         api.setNewAvatar(item)
-            .then((data) => {
-                setCurrentUser(data);
+            .then((res) => {
+                setCurrentUser(res.data);
                 closeAllPopups();
             })
             .catch((err) => {
