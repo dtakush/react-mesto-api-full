@@ -168,7 +168,8 @@ function App() {
     }
 
     //Обработчик данных профиля
-    function handleUpdateUser(items) {   
+    function handleUpdateUser(items) {  
+        console.log(items); 
         api.setUserInfo(items)
             .then((userInfo) => {
                 setCurrentUser(userInfo);
