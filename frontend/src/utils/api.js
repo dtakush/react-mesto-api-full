@@ -57,13 +57,13 @@ class Api {
     }
 
     //Изменение информации о пользователе
-    setUserInfo(items) {
+    setUserInfo(data) {
       return fetch(`${this.baseUrl}/users/me`, {
         method: 'PATCH',
         headers: this.headers,
         body: JSON.stringify({
-          name: items.name,
-          about: items.about
+          name: data.name,
+          about: data.about
         })
       })
       .then(this._checkResponse)
