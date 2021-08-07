@@ -173,7 +173,6 @@ function App() {
     function handleUpdateUser(items) {   
         api.setUserInfo(items)
             .then((userInfo) => {
-                console.log(userInfo);
                 setCurrentUser(userInfo);
                 closeAllPopups();
             })

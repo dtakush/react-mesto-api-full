@@ -7,7 +7,6 @@ import PopupWithForm from './PopupWithForm';
 function EditProfilePopup(props) {
     //Подписываемся на контект
     const currentUser = React.useContext(CurrentUserContext);
-    console.log(currentUser);
 
     //Стейт-переменные
     const [name, setName] = React.useState('');
@@ -35,8 +34,7 @@ function EditProfilePopup(props) {
     React.useEffect(() => {
       setName(currentUser.name);
       setAbout(currentUser.about);
-      console.log(currentUser);
-    }, [currentUser, props.isOpen]);
+    }, [currentUser]);
 
 
     return (
