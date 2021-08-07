@@ -171,7 +171,6 @@ function App() {
 
     //Обработчик данных профиля
     function handleUpdateUser(items) {   
-        console.log(items);  
         api.setUserInfo(items)
             .then((userInfo) => {
                 console.log(userInfo);
