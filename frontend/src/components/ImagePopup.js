@@ -1,8 +1,12 @@
 import React from 'react';
 
-function ImagePopup({card, isOpen, onClose}) {
+function ImagePopup({card, isOpen, onClose, onOverlayClose}) {
     return (
-        <section className={`popup popup_card ${isOpen ? 'popup_opened' : ''}`} name={card.name}>
+        <section
+        className={`popup popup_card ${isOpen ? 'popup_opened' : ''}`}
+        name={card.name}
+        onClick={onOverlayClose}
+        >
             <div className="popup__container popup__container_card">
                 <div className="popup__pic">
                     <button className="popup__close popup__close_card" type="button" onClick={onClose}></button>

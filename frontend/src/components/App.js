@@ -254,6 +254,28 @@ function App() {
         });
     }
 
+    // Закрытие попапа по оверлею
+    function handleOverlayClose(evt) {
+        if(evt.target === evt.currentTarget) {
+            closeAllPopups()
+        }
+    }
+
+    //Закрытие попапа по Esc
+    function handleEscClose(evt) {
+        if(evt.key === 'Escape') {
+            closeAllPopups()
+            console.log('esc')
+        }
+    }
+
+    React.useEffect(() => {
+        document.addEventListener('keydown', handleEscClose);
+        return () => {
+            document.removeEventListener('keydown', handleEscClose)
+        }
+    })
+
 
 
   return (
@@ -298,18 +320,21 @@ function App() {
             isOpen={isEditProfilePopupOpen}
             onClose={closeAllPopups}
             onUpdateUser={handleUpdateUser}
+            onOverlayClose={handleOverlayClose}
             />
 
             <AddPlacePopup
             isOpen={isAddPlacePopupOpen}
             onClose={closeAllPopups}
             onAddCard={handleAddCardSubmit}
+            onOverlayClose={handleOverlayClose}
             />
 
             <EditAvatarPopup
             isOpen={isEditAvatarPopupOpen}
             onClose={closeAllPopups}
             onUpdateAvatar={handleUpdateAvatar}
+            onOverlayClose={handleOverlayClose}
             />
 
             <DeletePopup />
@@ -318,12 +343,14 @@ function App() {
             card={card}
             isOpen={isImagePopupOpen}
             onClose={closeAllPopups}
+            onOverlayClose={handleOverlayClose}
             />
 
             <InfoTooltip 
             name="authOk"
             isOpen={isSuccessTooltipPopupOpen}
             onClose={closeAllPopups}
+            onOverlayClose={handleOverlayClose}
             title="Вы успешно зарегистрировались!"
             />
 
@@ -331,6 +358,7 @@ function App() {
             name="authCancel"
             isOpen={isTooltipPopupOpen}
             onClose={closeAllPopups}
+            onOverlayClose={handleOverlayClose}
             title="Что-то пошло не так! Попробуйте ещё раз."
             />
         </div>

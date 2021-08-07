@@ -48,9 +48,10 @@ function EditAvatarPopup(props) {
         buttonTitle="Сохранить"
         isOpen={props.isOpen}
         onClose={props.onClose}
-        onSubmit={handleSubmit}>
+        onSubmit={handleSubmit}
+        onOverlayClose={props.onOverlayClose}>
             <input
-            value={''}
+            value={handleChangeAvatar}
             name="link" type="url"
             placeholder="Ссылка"
             className="popup__input popup__input_link"
