@@ -168,10 +168,8 @@ function App() {
 
     //Обработчик данных профиля
     function handleUpdateUser(data) {
-        console.log(data);
         api.setUserInfo(data)
             .then((res) => {
-                console.log(res.data);
                 setCurrentUser(res.data);
                 closeAllPopups();
             })

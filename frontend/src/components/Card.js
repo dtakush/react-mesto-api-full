@@ -8,13 +8,13 @@ function Card ({card, onCardClick, onCardLike, onCardDelete}) {
     const currentUser = React.useContext(CurrentUserContext);
 
     //Показ иконки удаления
-    const isOwn = card.owner._id === currentUser._id;
+    const isOwn = card.owner === currentUser._id;
     const cardDeleteButtonClassName = (
         `card__delete ${isOwn ? 'card__delete_show' : ''}`
     );
 
     //Изменение лайка карточки
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
     const cardLikeButtonClassName = (
         `card__like-image ${isLiked ? 'card__like-image_active' : ''}`
     ); 
