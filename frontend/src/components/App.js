@@ -83,13 +83,11 @@ function App() {
     //Проверка токена
     function tokenCheck() {
         const jwt = localStorage.getItem('jwt');
-        console.log(jwt);
 
         if(jwt) {
             auth.checkToken(jwt)
             .then((res) => {
                 if(res) {
-                    console.log(res);
                     setUserData({ 
                         email: res.email,
                         id: res._id,
@@ -172,9 +170,11 @@ function App() {
     }
 
     //Обработчик данных профиля
-    function handleUpdateUser(items) {     
+    function handleUpdateUser(items) {   
+        console.log(items);  
         api.setUserInfo(items)
             .then((userInfo) => {
+                console.log(userInfo);
                 setCurrentUser(userInfo);
                 closeAllPopups();
             })
