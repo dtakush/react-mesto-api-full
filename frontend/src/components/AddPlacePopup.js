@@ -35,7 +35,8 @@ function AddPlacePopup(props) {
         buttonTitle="Сохранить"
         isOpen={props.isOpen}
         onClose={props.onClose}
-        onSubmit={handleSubmit}>
+        onSubmit={handleSubmit}
+        onOverlayClose={props.onOverlayClose}>
             <input
             name="place"
             type="text"
