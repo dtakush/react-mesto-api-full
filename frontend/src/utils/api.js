@@ -26,6 +26,26 @@ class Api {
       })
       .then(this._checkResponse)
     }
+
+    //Удаление карточки
+    deleteCard(id) {
+      return fetch(`${this.baseUrl}/cards/${id}`, {
+        method: 'DELETE',
+        headers: this.headers
+      })
+      .then(this._checkResponse)
+    }
+
+    //Добавление и удаление лайка
+    changeLikeCardStatus(id, isLiked) {
+      return fetch(`${this.baseUrl}/cards/${id}/likes/`, {
+        method: isLiked ? 'PUT' : 'DELETE',
+        headers: this.headers
+
+      })
+      .then(this._checkResponse)
+    }
+  
   
     //Запрос информации о пользователе    
      getUserInfo() {
@@ -49,25 +69,6 @@ class Api {
       .then(this._checkResponse)
     }
 
-    //Удаление карточки
-    deleteCard(id) {
-      return fetch(`${this.baseUrl}/cards/${id}`, {
-        method: 'DELETE',
-        headers: this.headers
-      })
-      .then(this._checkResponse)
-    }
-
-     //Добавление и удаление лайка
-     changeLikeCardStatus(id, isLiked) {
-      return fetch(`${this.baseUrl}/cards/likes/${id}`, {
-        method: isLiked ? 'PUT' : 'DELETE',
-        headers: this.headers
-
-      })
-      .then(this._checkResponse)
-    }
-  
     //Изменение аватара
     setNewAvatar(avatar) {
       return fetch(`${this.baseUrl}/users/me/avatar`, {
