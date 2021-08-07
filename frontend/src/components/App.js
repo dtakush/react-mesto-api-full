@@ -125,10 +125,11 @@ function App() {
         if(loggedIn) {
             api.getUserInfo()
             .then((userInfo) => {
-            setCurrentUser(userInfo);
+                console.log(userInfo);
+                setCurrentUser(userInfo);
             })
             .catch((err) => {
-            console.log(`Attention! ${err}`);
+                console.log(`Attention! ${err}`);
             });
         }
         
