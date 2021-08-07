@@ -116,7 +116,6 @@ function App() {
         if(loggedIn) {
             api.getUserInfo()
             .then((userInfo) => {
-                console.log(userInfo);
                 setCurrentUser(userInfo);
             })
             .catch((err) => {
@@ -172,8 +171,8 @@ function App() {
         console.log(data);
         api.setUserInfo(data)
             .then((res) => {
-                console.log(res);
-                setCurrentUser(res);
+                console.log(res.data);
+                setCurrentUser(res.data);
                 closeAllPopups();
             })
             .catch((err) => {
