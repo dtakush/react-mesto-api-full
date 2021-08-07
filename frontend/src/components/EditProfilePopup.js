@@ -30,7 +30,10 @@ function EditProfilePopup(props) {
     function handleSubmit(e) {
         e.preventDefault();
         // Передаём значения управляемых компонентов во внешний обработчик
-        props.onUpdateUser(name, about);
+        props.onUpdateUser({
+          name: name,
+          about: about,
+        });
     }
 
     return (
