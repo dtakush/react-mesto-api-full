@@ -62,6 +62,7 @@ module.exports.getIdUser = (req, res, next) => {
 // Обновление профиля
 module.exports.updateProfile = (req, res, next) => {
   const { name, about } = req.body;
+  console.log(req);
 
   User.findByIdAndUpdate(
     req.user._id,
