@@ -17,17 +17,17 @@ function Main(props) {
         <main className="content">
             <section className="profile">
                 <div className="profile__person">
-                    <div className="profile__avatar" style={{ backgroundImage: `url(${currentUser.avatar})` }} onClick={props.onEditAvatar}>
+                    <div className="profile__avatar" style={{ backgroundImage: `url(${currentUser.data.avatar})` }} onClick={props.onEditAvatar}>
                         <div className="profile__avatar-edit">
                             <img src={editAvatar} className="profile__edit-icon" alt="Иконка редактирования аватара" />
                         </div>
                     </div>
                     <div className="profile__info">
                         <div className="profile__edit-info">
-                            <h1 className="profile__name" name="name">{currentUser.name}</h1>
+                            <h1 className="profile__name" name="name">{currentUser.data.name}</h1>
                             <button className="profile__edit-button" type="button" onClick={props.onEditProfile}></button>
                         </div>
-                        <p className="profile__about" name="about">{currentUser.about}</p>
+                        <p className="profile__about" name="about">{currentUser.data.about}</p>
                     </div>
                 </div>
                 <button className="profile__add-button" type="button" onClick={props.onAddPlace}></button>
