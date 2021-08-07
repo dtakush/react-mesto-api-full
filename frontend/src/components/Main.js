@@ -12,6 +12,15 @@ function Main(props) {
     //Подписываемся на контект
     const currentUser = React.useContext(CurrentUserContext);
 
+    //Стейт-переменные
+    const [name, setName] = React.useState('');
+    const [about, setAbout] = React.useState('');
+
+    React.useEffect(() => {
+        setName(currentUser.name);
+        setAbout(currentUser.about);
+      }, []);
+
     return (
         <main className="content">
             <section className="profile">

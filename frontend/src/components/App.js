@@ -111,7 +111,6 @@ function App() {
         tokenCheck();
     }, []);
 
-
     //Запрос информации пользователя
     React.useEffect(() => {
         if(loggedIn) {
@@ -126,20 +125,6 @@ function App() {
         }
         
     }, [loggedIn]);
-
-    //Запрос карточек
-     React.useEffect(() => {
-        if(loggedIn) {
-           api.getInitialCards()
-            .then((cards) => {     
-                setCards(cards);
-           })
-           .catch((err) => {
-               console.log(`Attention! ${err}`);
-            });
-        }
-    }, [loggedIn]);
-
 
     //Выход из аккаунта
    function handleSignOut() {
@@ -216,6 +201,20 @@ function App() {
         setIsTooltipPopupOpen(false);
         setIsSuccessTooltipPopupOpen(false);
     }
+
+
+     //Запрос карточек
+     React.useEffect(() => {
+         if(loggedIn) {
+            api.getInitialCards()
+            .then((cards) => {     
+                setCards(cards);
+            })
+            .catch((err) => {
+                console.log(`Attention! ${err}`);
+            });
+         }
+    }, [loggedIn]);
 
 
     //Постановка и удаление лайка
