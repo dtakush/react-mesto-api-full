@@ -22,7 +22,6 @@ const midlewareErrors = require('./middlewares/error');
 const { userValidation, loginValidation } = require('./middlewares/validation');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-
 const corsOptions = {
   origin: 'https://dtakush.mesto.students.nomoredomains.club',
   credentials: true,
@@ -33,7 +32,6 @@ app.use(cors(corsOptions));
 app.disable('x-powered-by');
 app.use(cookieParser());
 app.use(express.json());
-
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
@@ -69,5 +67,5 @@ app.use(errors()); // ошибки celebrate
 app.use(midlewareErrors); // централизованная обработка ошибок
 
 app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
+
 });

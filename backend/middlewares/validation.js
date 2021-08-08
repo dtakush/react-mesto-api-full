@@ -38,14 +38,14 @@ const userIdValidation = celebrate({
 
 const userInfoValidation = celebrate({
   body: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
-    about: Joi.string().min(2),
+    name: Joi.string().min(2).max(30).required(),
+    about: Joi.string().min(2).required(),
   }),
 });
 
 const avatarValidation = celebrate({
   body: Joi.object().keys({
-    avatar: Joi.string().min(2).pattern(/(http|https):\/\/\w*\S*\./),
+    avatar: Joi.string().min(2).required().pattern(/(http|https):\/\/\w*\S*\./),
   }),
 });
 
