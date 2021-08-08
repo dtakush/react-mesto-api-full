@@ -108,6 +108,7 @@ function App() {
 
     React.useEffect(() => {
         tokenCheck();
+        // eslint-disable-next-line
     }, []);
 
     //Запрос информации пользователя
