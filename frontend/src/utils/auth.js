@@ -13,13 +13,15 @@ export const register = (email, password) => {
       password: password})
   })
   .then((res) => {
-    try {
-      if (res.status !== 400){
+    if(res.status === 200) {
         return res.json();
       }
-    } catch(e){
-      return (e)
-    }
+      if(res.status === 409) {
+        console.log("При регистрации указан email, который уже существует");
+      }
+      if(res.status === 400) {
+        console.log("Переданы некорректные данные при создании пользователя");
+      }
   })
   .then((res) => {
     return res;
